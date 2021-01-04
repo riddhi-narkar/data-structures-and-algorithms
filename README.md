@@ -1,7 +1,7 @@
 # data-structures-c
 
 
-This repo has all my data structure codes, which were a part of my college course.
+This repo has all basic data structure codes implemented entirely in C language.
 The contents of this repo include:
 
 STACKS:
