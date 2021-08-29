@@ -1,40 +1,55 @@
 #include <iostream>
 using namespace std;
 
-void push(int stck [], int top)
+// FUNCTION DEFINITIONS
+
+// 1) IS EMPTY OR NOT --------------------------------------------------
+bool isEmpty(int stck[], int* top)
+{
+    return (*top == -1)? true : false;
+}
+
+
+// 2) PUSH ----------------------------------------------------------
+void push(int stck [], int* top)
 {
     try
     {
         int data;
         cout << "Enter data: " << endl;
         cin >> data;
+
         top++;
-        stck[top] = data;
+        stck[*top] = data;
     }
 
     catch(exception e)
     {
-        printf("\nWARNING: Stack overflow. Limit exceeded. Tried pushing at index %d.\nFIX: Try popping a value.\n", top);
+        cout << "\nWARNING: Stack overflow. \nFIX: Try popping a value instead.\n" << endl;
     }
 }
 
-int pop(int stck [], int top)
+
+// 3) POP ---------------------------------------------------------------
+int pop(int stck [], int* top)
 {
-    try
+    if(isEmpty(stck, &top) == true)
     {
-        int data = stck[top];
+        cout << "\nWARNING: Stack underflow. \nFIX: Try pushing a value instead.\n" << endl;
+        return -1;
+    }
+
+    else
+    {
         top--; 
-        return data;
+        return stck[*top++];
     }
-
-    catch(exception e)
-    {
-        printf("\nWARNING: Stack underflow. Tried popping a null stack.\nFIX: Try pushing a value instead.\n");
-        return 0;
-    }   
+      
 }
 
-int peek(int stck[], int top)
+
+// 4) PEEK ---------------------------------------------------------------
+int peek(int stck[], int* top)
 {
     try
     {
@@ -49,7 +64,8 @@ int peek(int stck[], int top)
     }
 }
 
-void display(int stck[], int top)
+
+void display(int stck[], int* top)
 {
     cout << "\nThe stack is: " << endl;
 
@@ -57,14 +73,18 @@ void display(int stck[], int top)
         cout << stck[i] << endl;
 }
 
+
+
 int main()
 {
-    int n, choice, top = -1, data;
+    int size, choice, top = -1, data;
     bool opt = true;
     char key;
+
     cout << "Enter max stack size: ";
-    cin >> n;
-    int stck[n];
+    cin >> size;
+    int stck[size];
+
     cout << "__________________________________________________________________________________________________\n";
 
     while(opt)
@@ -73,6 +93,7 @@ int main()
         cout << "2) Pop" << endl;
         cout << "3) Peek" << endl;
         cout << "4) Display" << endl;
+        cout << "5) If empty" << endl;
 
         cout << endl << "Enter your choice number: ";
         cin >> choice;
@@ -80,26 +101,34 @@ int main()
         switch(choice)
         {
             case 1:
-                push(stck, top);
+                push(stck, &top);
                 break;
 
             case 2:
-                data = pop(stck, top);
-                break;
+                data = pop(stck, &top);
+                cout << "The popped element is " << data << endl;
+                break; 
 
             case 3: 
-                data = peek(stck, top);
+                data = peek(stck, &top);
+                cout << "The value of top is " << data << endl;
                 break;
             
             case 4: 
-                display(stck, top);
+                display(stck, &top);
                 break;
+
+            case 5: 
+                cout << endl;
+                string ans = (isEmpty(stck, &top) == true) ? "Empty stack" : "Non-empty stack";
+                cout << endl;
+
         }
 
         cout << "Press any key to continue and 'n' to stop" << endl;
         cin >> key;
 
-        if(key == 'n')
+        if(tolower(key) == 'n')
             opt = false;
     }
 }
