@@ -1,4 +1,4 @@
-# data-structures-c
+# data-structures-and-algorithms
 
 
 This repo has all basic data structure and algorithm code.
