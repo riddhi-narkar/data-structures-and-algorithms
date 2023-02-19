@@ -20,16 +20,16 @@ void insertion_sort(int arr[])//, int size)
 
 }
 
-int main()
-{
-    int a[] = {6, 2, 1, 5, 7};
-    insertion_sort(a);
+// int main()
+// {
+//     int a[] = {6, 2, 1, 5, 7};
+//     insertion_sort(a);
 
-    for (int i = 0; i<5; i++)
-        printf("\n%d", a[i]);
+//     for (int i = 0; i<5; i++)
+//         printf("\n%d", a[i]);
 
-    return 0;
-}
+//     return 0;
+// }
 
 // int main()
 // {
