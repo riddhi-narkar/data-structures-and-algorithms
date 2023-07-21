@@ -1,4 +1,4 @@
-#include<bits_stdc++.h>
+#include<bits/stdc++.h>
 // #include <cmath>
 using namespace std;
 
@@ -13,7 +13,7 @@ void merge(int arr[], int start1, int start2, int end)
 
     for(int i = 0; i < size2; i++)
         right[i] = arr[start2 + i];
-    
+
     left[size1 + 1] = 100;
     right[size2 + 1] = 100;
 
@@ -53,6 +53,6 @@ int main()
 
     for(int i = 0; i<10; i++)
         cout << "\n" << a[i];
-    
+
     return 0;
 }
